@@ -1,0 +1,36 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="text-title">
+                Personagens
+            </h1>
+
+            <div class="toolbar">
+                <ul class="toolbar-search">
+                    <li><a class="link link-alive" (click)="applyFilter('Alive');">Vivo</a></li>
+                    <li><a class="link link-alive" (click)="applyFilter('Presumed dead');">Indefinido</a></li>
+                    <li><a class="link link-dead"  (click)="applyFilter('Deceased');">Morto</a></li>
+                    <li><a class="link link-all"   (click)="applyFilter();">Todos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="character-list">
+        <div class="character" *ngFor="let char of characterList">
+            <div class="character-status">
+                <span [ngClass]="char.status | characterStatus" >
+                    {{char.status}}
+                </span>
+            </div>
+            <div class="character-background" [style.background]="'url(' + char.img + ')'"></div>
+
+            <h2 class="character-name">
+                {{char.name}}
+            </h2>
+            <p class="character-rip"></p>
+            <p class="character-description"></p>
+        </div>
+    </div>
+</div>
