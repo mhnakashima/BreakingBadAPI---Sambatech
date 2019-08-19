@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EspisodesService } from './espisodes.service';
+import { Episode } from '../api/episodes';
 
 @Component({
   selector: 'app-episodes',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EpisodesComponent implements OnInit {
 
-  constructor() { }
+  public episodes: Episode[];
+
+  constructor(private episodeService: EspisodesService) { }
 
   ngOnInit() {
+    this.episodeService.getEpisodes()
+          .subscribe( episodes => {
+            if(episodes){
+              this.episodes = episodes;
+            }
+          })
   }
 
 }

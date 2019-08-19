@@ -1,0 +1,128 @@
+.toolbar{
+    position: relative;
+
+    display: inline-block;
+    text-align: right;
+    
+    &-search{
+        padding: 0px;
+
+        li{
+            display: inline-block;
+            margin: 0 5px;
+
+            a{
+                padding: 10px 15px;
+
+                border: 1px solid #fff;
+                border-radius: 5px;
+
+                &.active{
+                    background-color: #fff;
+                    color: #0a0a0a;
+                }
+
+                cursor: pointer;
+
+                &.presumed, &.deceased{
+                    border-color: #ea8a00;
+                    color: #ea8a00;
+
+                    &.active{
+                        background-color: #ea8a00;
+                        color: #fff;
+                    }
+                }
+
+                &.alive{
+                    border-color: #2da703; 
+                    color: #2da703;
+
+                    &.active{
+                        background-color: #2da703;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dashboard{
+    &-header{
+
+        margin-bottom: 60px;
+
+        .toolbar{
+            float: right;
+        }
+    }
+}
+
+.text-title{
+    display: inline-block;
+}
+
+.character{
+    &-background{
+
+        position: relative;
+
+        min-height: 350px;
+
+        margin-bottom: 20px;
+
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+    }
+
+    &-list{
+        display: grid;
+        
+        grid-gap: 10px;
+        grid-template-columns: repeat(4, minmax(250px, 1fr) ) ;
+        grid-template-rows: auto;
+    }
+
+    &-flag{
+
+        position: absolute;
+        
+        right: 0px;
+        top: 10px;
+
+        padding: 5px 10px;
+
+        background-color: #2da703; 
+        color: #fff;
+        text-align: left;
+
+        &.alive{
+            background-color: #2da703; 
+        }
+
+        &.deceased{
+            background-color: #ea8a00; 
+        }
+    }
+
+    &-footer{
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;      
+    }
+
+    &-name{
+
+        margin: 0px;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    &-rip{
+        margin: 0px;
+    }
+}

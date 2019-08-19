@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,8 @@ import { ContactComponent } from './contact/contact.component';
 import { EpisodesComponent } from './episodes/episodes.component';
 
 import { CharacterStatusPipe } from './utils/character-status.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchUserPipe } from './utils/search-user.pipe';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,14 @@ import { CharacterStatusPipe } from './utils/character-status.pipe';
     DashboardComponent,
     ContactComponent,
     EpisodesComponent,
-    CharacterStatusPipe
+    CharacterStatusPipe,
+    SearchUserPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
-    AppRoutingModule
-  
+    AppRoutingModule, BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

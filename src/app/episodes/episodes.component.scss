@@ -1,0 +1,73 @@
+.episode{
+
+    display: grid;
+    
+    margin-bottom: 20px;
+    padding: 0 0 20px;
+
+    border-bottom-color: rgba(245,245,245,0.4);
+    border-bottom-width: 0.5px;
+
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: 0px;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "episode-name episode-release episode-characters";
+
+    &:last-child{
+        border: none;
+    }
+
+    &-section{
+        grid-area: area;
+    }
+
+    &-name{
+        grid-area: episode-name;
+    }
+
+    &-release{
+        grid-area: episode-release;
+    }
+
+    &-characters{
+        grid-area: episode-characters;
+    }
+
+    &-holder{
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(100px, 1fr) ) ;
+        grid-template-rows: auto;
+        grid-gap: 10px;
+    }
+
+    &-character{
+        //grid-area: character;
+    }
+
+    &-title{
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    &-mainTitle{
+        margin-bottom: 60px;
+    }
+
+    &-description,  &-subtitle, &-date{
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    &-subtitle{
+        font-weight: bold;
+    }
+
+    &-date{
+        font-weight: normal;
+    }
+}
+

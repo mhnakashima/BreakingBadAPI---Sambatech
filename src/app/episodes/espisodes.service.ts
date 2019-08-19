@@ -1,28 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { pipe, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Episode } from '../api/episodes';
 
 const API = 'https://breakingbadapi.com';
 
 @Injectable({
   providedIn: 'root'
 })
+export class EspisodesService {
 
-export class DashboardService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  public getEpisodes(search?: string){
 
-  public getCharacters(search?: string){
-
-    let params;
-    
-    if(search){
-      params = new HttpHeaders();
-      params.set('name', search);  
-    }
-  
-    return this.http.get<any[]>(API + '/api/characters/')
+    return this.http.get<Episode[]>(API + '/api/episodes/')
           .pipe(
             tap(
               console.log

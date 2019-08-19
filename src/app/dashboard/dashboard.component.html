@@ -1,36 +1,51 @@
-<div class="container">
+<div  class="container area">
     
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="text-title">
-                Personagens
-            </h1>
+            <div class="dashboard-header">
+                <h1 class="text-title">
+                    {{searchDashValue == '' || searchDashValue == null ? 'Personagens:' : 'Você buscou por: ' + searchDashValue}}
+                </h1>
 
-            <div class="toolbar">
-                <ul class="toolbar-search">
-                    <li><a class="link link-alive" (click)="applyFilter('Alive');">Vivo</a></li>
-                    <li><a class="link link-alive" (click)="applyFilter('Presumed dead');">Indefinido</a></li>
-                    <li><a class="link link-dead"  (click)="applyFilter('Deceased');">Morto</a></li>
-                    <li><a class="link link-all"   (click)="applyFilter();">Todos</a></li>
-                </ul>
-            </div>
+                <div class="toolbar">
+                    <ul class="toolbar-search">
+                        <li 
+                            *ngFor="let menu of menuList; let in = index">
+                                <a 
+                                    [ngClass]="{ 'active' : menu.isSelected }"
+                                    class="link {{menu.name | lowercase }}" 
+                                    (click)="applyFilter(menu.name);"
+                                >
+                                    {{menu.name}}
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+             </div>
         </div>
     </div>
 
     <div class="character-list">
-        <div class="character" *ngFor="let char of characterList">
+        <div class="character character-background" *ngFor="let char of characterList | searchUser:searchDashValue" [ngStyle]="{'background-image': 'linear-gradient(transparent 30%,
+        #000), url(' +char.img + ')'}" >
+            
             <div class="character-status">
-                <span [ngClass]="char.status | characterStatus" >
+                <span class="character-flag" [ngClass]="char.status | characterStatus" >
                     {{char.status}}
                 </span>
             </div>
-            <div class="character-background" [style.background]="'url(' + char.img + ')'"></div>
-
-            <h2 class="character-name">
-                {{char.name}}
-            </h2>
-            <p class="character-rip"></p>
-            <p class="character-description"></p>
+            
+            <div class="character-footer">
+                <h2 class="character-name">
+                    {{char.name}}
+                </h2>
+                <p class="character-rip">
+                    {{ char.birthday == 'Unknown' ? char.birthday : char.birthday | date: 'dd/MM/y' }}
+                </p>
+                <p class="character-description">
+                    <span *ngFor="let occupation of char.occupation">{{occupation}} </span>
+                </p>
+            </div>
         </div>
     </div>
 </div>

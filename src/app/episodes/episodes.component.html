@@ -1,1 +1,39 @@
-<p>episodes works!</p>
+<div class="container area">
+
+    <div class="row">
+        <div class="col-12">
+            <header>
+                <h1 class="episode-mainTitle text-title">
+                    Episódios
+                </h1>
+            </header>
+
+            <div *ngFor="let episode of episodes" class="card episode">
+                <div name="area" class="episode-section episode-name">
+                    <h2 class="episode-title">
+                        {{episode.title}}
+                    </h2>
+                    <span class="episode-description">
+                        Season {{episode.season}} 
+                    </span>
+                </div>
+
+                <div name="area" class="episode-section episode-release">
+                    <h4 class="episode-date">
+                        Data de estreia:<br>
+                        {{episode.air_date | date : 'dd/MM/y' }}
+                    </h4>
+                </div>
+
+                <div name="area" class="episode-section episode-characters">
+                    <div class="episode-holder">
+                        <h4 class="episode-subtitle episode-character">Personagens</h4>
+                        <div *ngFor="let char of episode.characters" class="episode-character">
+                            {{char}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
